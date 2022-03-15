@@ -43,7 +43,6 @@ public class Directory extends FileEntity{
             if(fileEntity instanceof File){
                 if(fileEntity.name.contains(name)){
                     sb.append(path);
-//                    sb.append(": ");
                     sb.append(fileEntity.name);
                     sb.append(" (file)");
                     sb.append("\n");
@@ -52,12 +51,11 @@ public class Directory extends FileEntity{
             else if(fileEntity instanceof Directory){
                 if(fileEntity.name.contains(name)){
                     if(parentDirectory==null){
-                        sb.append("System/");
+                        sb.append("root/");
                     }
                     else{
                         sb.append(parentDirectory.getPath());
                     }
-//                    sb.append(": ");
                     sb.append(name);
                     sb.append(" (directory)");
                     sb.append("\n");
@@ -71,7 +69,7 @@ public class Directory extends FileEntity{
 
     public String getPath(){
         if(parentDirectory!=null){
-            return parentDirectory.getPath() + "/" + name + "/";
+            return parentDirectory.getPath() + name + "/";
         }
         else{
             return name + "/";
